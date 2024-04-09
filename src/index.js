@@ -5,8 +5,8 @@ import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
 
 const routes = {
-    "/": Home,
-    "/about": About,
+    "/src/": Home,
+    "/src/About": About,
     "/error": error 
 };
 
@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const rootEl = document.getElementById('root');
     setRootEl(rootEl);
     setRoutes(routes);
-    onURLChange(); 
+    onURLChange(window.location.pathname); 
 });
 
 /*

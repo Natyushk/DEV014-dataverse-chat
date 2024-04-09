@@ -3,19 +3,20 @@ let rootEl;
 
 export const setRootEl = (el) => {
     rootEl = el;
+    return rootEl;
 };
 
 export const setRoutes = (routes) => {
   // optional Throw errors if routes isn't an object
   // optional Throw errors if routes doesn't define an /error route
   ROUTES = routes;
+  return ROUTES;
 };
 
 export const renderView = (pathname, props={}) => {
-    const view = ROUTES[pathname] || ROUTES['/error'];
-    const viewEl = view.props;
     rootEl.innerHTML = '';
-    rootEl.appendChild(viewEl);
+    const view = props[pathname];
+    rootEl.appendChild(view());
   };
 
 export const navigateTo = (pathname, props={}) => {
@@ -24,8 +25,7 @@ export const navigateTo = (pathname, props={}) => {
   }
 
 export const onURLChange = (location) => {
-    const pathname = window.location.pathname
-    renderView(pathname);
+    renderView(location, ROUTES)
     // parse the location for the pathname and search params
     // convert the search params to an object
     // render the view with the pathname and object
