@@ -15,7 +15,7 @@ export const setRoutes = (routes) => {
 
 export const renderView = (pathname, props={}) => {
     rootEl.innerHTML = '';
-    const view = props[pathname];
+    const view = ROUTES[pathname] || ROUTES["./error"];
     rootEl.appendChild(view());
   };
 
