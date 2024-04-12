@@ -5,3 +5,4 @@ export function footer() {
     `;
     return viewEl
 }
+export default footer;

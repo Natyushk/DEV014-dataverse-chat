@@ -1,61 +1,68 @@
-import  data  from '../data/dataset.js';
+import  data  from '../Data/dataset.js';
+import  {header}  from '../Components/header.js';
+import {selects} from '../Components/selects.js';
+import { renderItems } from '../Components/layoutCards.js';
 import { filterByContinent, sortBy, calculateFortuneStats } from '../lib/dataFunctions.js';
+import divStats from '../Components/divStats.js';
 
 export function Home() {
-    const viewEl = document.createElement('div');
-    
-    //Construir la representación visual de los datos
-    viewEl.innerHTML = `
-  <main id="root">
-    <section>
-      <label for="continent-filter">Filtrar por continente:</label>
-      <select name="continente" id="continent-filter" data-testid="select-filter" >
-        <option value="Todos">Todos</option>
-        <option value="Oceanía">Oceanía</option>
-        <option value="América">América</option>
-        <option value="Asia">Asia</option>
-        <option value="Africa">África</option>
-        <option value="Europa">Europa</option>
-        <option value="Antartida">Antártida</option>
-      </select>
-    <label for="sort-by">Ordenar por:</label>
-    <select name="name" id="sort-by" data-testid="select-sort">
-      <option value="asc">Nombre (A-Z)</option>
-      <option value="desc">Nombre (Z-A)</option>
-      <option value="fortune-asc">Fortuna (Ascendente)</option>
-      <option value="fortune-desc">Fortuna (Descendente)</option>
-    </select>
-    <button data-testid="button-clear" id="reset-button">Limpiar</button>
-    </section>
-    <div id="fortune-stats">
-      <p id="total-fortune">Suma total de fortunas:</p>
-      <p id="average-fortune">Promedio de fortunas:</p>
-    </div>
-  </main>
-</body>`;
- //Filtrar los datos por continente
-   // const filteredData = filterByContinent(data, props.continentFiltered);
+    //Llamar componente header
+    const body = document.querySelector('body');
+    body.insertBefore(header(), body.children[0]);
 
-    //Filtrar los datos
-    //const sortedData = sortBy(filteredData, props.sortBy);
+    //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
+    const main = document.querySelector('main');
+    main.appendChild(selects());
 
-    //Calcular la fortuna
-    //const[totalFortune, averageFortune] = calculateFortuneStats(filteredData);
-    
+    //Llamar componente div con for
+    main.appendChild(divStats());
 
-   //Sección de comportamiento select Filter
-   // Referencias a elementos del DOM
-const continentFilterSelect = viewEl.querySelector('#continent-filter');
-const sortBySelect = viewEl.querySelector('#sort-by');
-const totalFortuneElement = viewEl.querySelector('#total-fortune');
-const averageFortuneElement = viewEl.querySelector('#average-fortune');
-const resetButton = viewEl.querySelector('#reset-button');
+ const continentFilterSelect = main.querySelector('#continent-filter');
+ const sortBySelect = main.querySelector('#sort-by');
+ const totalFortuneElement = main.querySelector('#total-fortune');
+ const averageFortuneElement = main.querySelector('#average-fortune');
+ const resetButton = main.querySelector('#reset-button');
 
-//    const continent = viewEl.querySelector("#continent-filter");
-//    continent.addEventListener("change", function (){
-//     console.log("Hola");
-//    })
+let richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
 
-    return viewEl;
+// Función para actualizar y mostrar la fortuna total y el promedio
+const updateFortuneStats = (data) => {
+    const [formattedTotalFortune, formattedAverageFortune] = calculateFortuneStats(data)
+    totalFortuneElement.textContent = `Suma total de fortunas: $${formattedTotalFortune.toLocaleString('en')} B`;
+    averageFortuneElement.textContent = `Promedio de fortunas: $${isNaN(formattedAverageFortune) ? 0 : formattedAverageFortune} B`;
+  };
+  
+  // Actualizar las estadísticas de fortuna inicialmente
+  updateFortuneStats(data);
+  
+  // Manejador de evento para cambio en select para filtrar por continente
+  continentFilterSelect.addEventListener('change', () => {
+    const continent = continentFilterSelect.value;
+    const filteredData = filterByContinent(data, continent);
+    sortBySelect.value = 'asc';
+    richPeopleList.remove();
+    richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
+    updateFortuneStats(filteredData);
+  });
+  
+  // Manejador de evento para cambio en select para ordenar
+  sortBySelect.addEventListener('change', () => {
+    const order = sortBySelect.value;
+    const sortedData = sortBy(filterByContinent(data,continentFilterSelect.value), order);
+    richPeopleList.remove();
+    richPeopleList = document.querySelector("main").appendChild(renderItems(sortedData));
+    updateFortuneStats(sortedData);
+  });
+  
+  //Función para boton limpiar
+  resetButton.addEventListener('click', () => {
+    continentFilterSelect.value = 'Todos';
+    sortBySelect.value = 'asc';
+    richPeopleList.remove();
+    richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
+    updateFortuneStats(data);
+  });
+
+return richPeopleList;
 };
 export default Home;
