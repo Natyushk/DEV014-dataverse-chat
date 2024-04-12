@@ -5,3 +5,4 @@
     `;
     return viewEl
 }
+export default header;
