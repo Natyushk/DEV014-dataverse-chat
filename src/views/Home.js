@@ -1,9 +1,10 @@
 import  data  from '../Data/dataset.js';
 import  {header}  from '../Components/header.js';
-import {selects} from '../Components/selects.js';
 import { renderItems } from '../Components/layoutCards.js';
-import { filterByContinent, sortBy, calculateFortuneStats } from '../lib/dataFunctions.js';
+import { filterByContinent, sortBy, calculateFortuneStats, filterByName} from '../lib/dataFunctions.js';
 import divStats from '../Components/divStats.js';
+import searchSection from '../Components/searchSection.js';
+import noCoincidences from '../Components/noCoincidences.js';
 
 export function Home() {
     //Llamar componente header
@@ -12,7 +13,7 @@ export function Home() {
 
     //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
     const main = document.querySelector('main');
-    main.appendChild(selects());
+    main.appendChild(searchSection());
 
     //Llamar componente div con for
     main.appendChild(divStats());
@@ -21,7 +22,9 @@ export function Home() {
  const sortBySelect = main.querySelector('#sort-by');
  const totalFortuneElement = main.querySelector('#total-fortune');
  const averageFortuneElement = main.querySelector('#average-fortune');
+ const searchInput = main.querySelector('#search-input');
  const resetButton = main.querySelector('#reset-button');
+
 
 let richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
 
@@ -54,6 +57,22 @@ const updateFortuneStats = (data) => {
     updateFortuneStats(sortedData);
   });
   
+  //Manejador de evento para cambio en input de búsqueda
+  searchInput.addEventListener('input', () => {
+    //Obtener el valor del input
+    const searchTerm = searchInput.value.trim();
+    //Filtrar los datos según el valor del input
+    const filteredData = filterByName(data, searchTerm);
+    //Renderizar los resultados filtrados
+    /*if (filteredData.length === 0) {
+      main.appendChild(noCoincidences());
+    } */ //Dentro de la función se ejecuta cada vez que el input cambia 
+    
+    richPeopleList.remove();
+    richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
+    updateFortuneStats(filteredData);
+})  
+
   //Función para boton limpiar
   resetButton.addEventListener('click', () => {
     continentFilterSelect.value = 'Todos';
