@@ -392,7 +392,7 @@ export default [
     }
   },
 
-{
+  {
     "id": "alice-walton",
     "name": "Alice Walton",
     "shortDescription": "Heredera de Walmart, destacada coleccionista de arte y filántropa comprometida con causas sociales y educativas.",
@@ -408,8 +408,7 @@ export default [
       "countryOfBirth": "Estados Unidos",
       "continent": "América"
     }
-},
-
+  },
   {
     "id": "gio-ferrero",
     "name": "Giovanni Ferrero",
@@ -427,5 +426,4 @@ export default [
       "continent": "Europa"
     }
   },
-
 ];

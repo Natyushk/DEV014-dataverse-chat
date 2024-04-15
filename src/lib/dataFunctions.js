@@ -71,7 +71,7 @@ searchInput.addEventListener('input', () => {
   viewEl.innerHTML = '<p>No existen coincidencias</p>';*/
   
 
- /*7. Mostrar todos los componentes cuando se borra el texto del input
+/*7. Mostrar todos los componentes cuando se borra el texto del input
 searchInput.addEventListener('keyup', (event) => {
   if (event.key === 'Backspace' && searchInput.value.trim() === '') {
     renderItems(data);
