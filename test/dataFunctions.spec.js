@@ -1,4 +1,4 @@
-import { sortBy, calculateFortuneStats, filterByContinent } from '../src/dataFunctions.js';
+import { sortBy, calculateFortuneStats, filterByContinent, filterByName } from '../src/lib/dataFunctions.js';
 import { data } from './data.js';
 
 const SORT_BY_NAME_ASC = [
@@ -290,3 +290,20 @@ describe('calculateFortuneStats', () => {
 });
 
 
+describe('filterByName', () => {
+  it('Debe filtrar la data por nombre cuando busca un termino existente', () => {
+    const filteredData = filterByName(data, 'Jeff');
+    expect(filteredData).toHaveLength(1);
+    expect(filteredData[0].name).toBe('Jeff Bezos');
+  });
+
+  it('Debe retornar toda la data cuando busca un termino vacío', () => {
+    const filteredData = filterByName(data, '');
+    expect(filteredData).toHaveLength(data.length);
+  });
+
+  it('Debe retornar un array vacío cuando busca un termino que no hace match con ningún nombre', () => {
+    const filteredData = filterByName(data, 'Unknown');
+    expect(filteredData).toHaveLength(0);
+  });
+});

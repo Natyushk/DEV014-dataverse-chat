@@ -4,32 +4,30 @@ import { renderItems } from '../Components/layoutCards.js';
 import { filterByContinent, sortBy, calculateFortuneStats, filterByName} from '../lib/dataFunctions.js';
 import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
-import noCoincidences from '../Components/noCoincidences.js';
+//import noCoincidences from '../Components/noCoincidences.js';
 
 export function Home() {
-    //Llamar componente header
-    const body = document.querySelector('body');
-    body.insertBefore(header(), body.children[0]);
+  //Llamar componente header
+  const body = document.querySelector('body');
+  body.insertBefore(header(), body.children[0]);
+  //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
+  const main = document.querySelector('main');
+  main.appendChild(searchSection());
+  //Llamar componente div con for
+  main.appendChild(divStats());
 
-    //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
-    const main = document.querySelector('main');
-    main.appendChild(searchSection());
-
-    //Llamar componente div con for
-    main.appendChild(divStats());
-
- const continentFilterSelect = main.querySelector('#continent-filter');
- const sortBySelect = main.querySelector('#sort-by');
- const totalFortuneElement = main.querySelector('#total-fortune');
- const averageFortuneElement = main.querySelector('#average-fortune');
- const searchInput = main.querySelector('#search-input');
- const resetButton = main.querySelector('#reset-button');
+  const continentFilterSelect = main.querySelector('#continent-filter');
+  const sortBySelect = main.querySelector('#sort-by');
+  const totalFortuneElement = main.querySelector('#total-fortune');
+  const averageFortuneElement = main.querySelector('#average-fortune');
+  const searchInput = main.querySelector('#search-input');
+  const resetButton = main.querySelector('#reset-button');
 
 
-let richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
+  let richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
 
-// Función para actualizar y mostrar la fortuna total y el promedio
-const updateFortuneStats = (data) => {
+  // Función para actualizar y mostrar la fortuna total y el promedio
+  const updateFortuneStats = (data) => {
     const [formattedTotalFortune, formattedAverageFortune] = calculateFortuneStats(data)
     totalFortuneElement.textContent = `Suma total de fortunas: $${formattedTotalFortune.toLocaleString('en')} B`;
     averageFortuneElement.textContent = `Promedio de fortunas: $${isNaN(formattedAverageFortune) ? 0 : formattedAverageFortune} B`;
@@ -71,7 +69,7 @@ const updateFortuneStats = (data) => {
     richPeopleList.remove();
     richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
     updateFortuneStats(filteredData);
-})  
+  })  
 
   //Función para boton limpiar
   resetButton.addEventListener('click', () => {
@@ -82,6 +80,6 @@ const updateFortuneStats = (data) => {
     updateFortuneStats(data);
   });
 
-return richPeopleList;
-};
+  return richPeopleList;
+}
 export default Home;

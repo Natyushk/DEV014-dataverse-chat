@@ -1,8 +1,8 @@
 export function  noCoincidences() {
-    const viewEl = document.createElement('div');
-    viewEl.innerHTML = `
+  const viewEl = document.createElement('div');
+  viewEl.innerHTML = `
     <p>No existen coincidencias</p>
-    `;
-    return viewEl
+  `;
+  return viewEl
 }
 export default noCoincidences;

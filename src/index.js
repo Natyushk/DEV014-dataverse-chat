@@ -5,16 +5,16 @@ import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
 
 const routes = {
-    "/src/": Home,
-    "/src/About": About,
-    "/error": error 
+  "/src/": Home,
+  "/src/About": About,
+  "/error": error 
 };
 
 window.addEventListener("DOMContentLoaded", () => {
-    const rootEl = document.getElementById('root');
-    setRootEl(rootEl);
-    setRoutes(routes);
-    onURLChange(window.location.pathname); 
+  const rootEl = document.getElementById('root');
+  setRootEl(rootEl);
+  setRoutes(routes);
+  onURLChange(window.location.pathname); 
 });
 
 /*

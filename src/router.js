@@ -2,8 +2,8 @@ let ROUTES = {};
 let rootEl;
 
 export const setRootEl = (el) => {
-    rootEl = el;
-    return rootEl;
+  rootEl = el;
+  return rootEl;
 };
 
 export const setRoutes = (routes) => {
@@ -14,19 +14,19 @@ export const setRoutes = (routes) => {
 };
 
 export const renderView = (pathname, props={}) => {
-    rootEl.innerHTML = '';
-    const view = ROUTES[pathname] || ROUTES["./error"];
-    rootEl.appendChild(view());
-  };
+  rootEl.innerHTML = '';
+  const view = ROUTES[pathname] || ROUTES["./error"];
+  rootEl.appendChild(view(props));
+};
 
 export const navigateTo = (pathname, props={}) => {
-    window.history.pushState({}, '', pathname);
-    renderView(pathname, props);
-  }
+  window.history.pushState({}, '', pathname);
+  renderView(pathname, props);
+}
 
 export const onURLChange = (location) => {
-    renderView(location, ROUTES)
-    // parse the location for the pathname and search params
-    // convert the search params to an object
-    // render the view with the pathname and object
-  };
+  renderView(location, ROUTES)
+  // parse the location for the pathname and search params
+  // convert the search params to an object
+  // render the view with the pathname and object
+};
