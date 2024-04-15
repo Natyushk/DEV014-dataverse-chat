@@ -4,12 +4,19 @@ import { renderItems } from '../Components/layoutCards.js';
 import { filterByContinent, sortBy, calculateFortuneStats, filterByName} from '../lib/dataFunctions.js';
 import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
+import saveApiKey from '../Components/saveApiKey.js';
 //import noCoincidences from '../Components/noCoincidences.js';
 
 export function Home() {
   //Llamar componente header
   const body = document.querySelector('body');
   body.insertBefore(header(), body.children[0]);
+  //Llamar al componente saveApiKey
+  body.appendChild(saveApiKey());
+  const dialogApiKey = body.querySelector('#mainModal');
+  //Mostrar Modal
+  dialogApiKey.showModal();
+  
   //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
   const main = document.querySelector('main');
   main.appendChild(searchSection());
@@ -22,9 +29,14 @@ export function Home() {
   const averageFortuneElement = main.querySelector('#average-fortune');
   const searchInput = main.querySelector('#search-input');
   const resetButton = main.querySelector('#reset-button');
-
+  const saveButton = body.querySelector('#save-apikey');
 
   let richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
+  saveButton.addEventListener('click', () => {
+    const inputApiKey = body.querySelector('#input-api-key').value;
+    localStorage.setItem('API Key', inputApiKey)
+    dialogApiKey.close();
+  });
 
   // Función para actualizar y mostrar la fortuna total y el promedio
   const updateFortuneStats = (data) => {
