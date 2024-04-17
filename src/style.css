@@ -54,6 +54,8 @@
     padding: 0;
 }
 body{
+    background-image: url("https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/gris.jpg");
+    background-size: cover;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; 
     color: white;
     min-height: 100vh;
@@ -73,9 +75,9 @@ main {
     text-align: center;
 }
 section {
+    padding: 24px;
     width: 100%;
     font-size: 28px;
-    border-bottom: 8px solid var(--main-color);
 }
 #search-section {
     display: flex;
