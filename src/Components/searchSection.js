@@ -1,5 +1,6 @@
 export function searchInput () {
   const viewEl = document.createElement('section');
+  viewEl.setAttribute("id", "search-section")
   viewEl.innerHTML = `
     <label for="continent-filter">Filtrar por continente:</label>
     <select name="continente" id="continent-filter" data-testid="select-filter" >
