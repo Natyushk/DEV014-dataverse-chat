@@ -1,29 +1,39 @@
 import  data  from '../Data/dataset.js';
 import  {header}  from '../Components/header.js';
 import { renderItems } from '../Components/layoutCards.js';
-import { filterByContinent, sortBy, calculateFortuneStats, filterByName} from '../lib/dataFunctions.js';
+//import { filterByContinent, sortBy, calculateFortuneStats, filterByName} from '../lib/dataFunctions.js';
 import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
-import saveApiKey from '../Components/saveApiKey.js';
+import footer from '../Components/footer.js';
+
+//import saveApiKey from '../Components/saveApiKey.js';
 //import noCoincidences from '../Components/noCoincidences.js';
 
 export function Home() {
   //Llamar componente header
-  const body = document.querySelector('body');
-  body.insertBefore(header(), body.children[0]);
-  //Llamar al componente saveApiKey
-  body.appendChild(saveApiKey());
-  const dialogApiKey = body.querySelector('#mainModal');
-  //Mostrar Modal
-  dialogApiKey.showModal();
-  
-  //Llamar componente con section de select para filtro, select para ordenar y botón limpiar
-  const main = document.querySelector('main');
-  main.appendChild(searchSection());
-  //Llamar componente div con for
-  main.appendChild(divStats());
+  const homeContainer = document.createElement('section');
+  homeContainer.appendChild(header());
+  homeContainer.appendChild(searchSection());
+  homeContainer.appendChild(divStats());
+  //Llamar a las tarjetas y limpieza
+  const cardsContainer = document.createElement('div');
+  cardsContainer.appendChild(renderItems(data));
+  homeContainer.appendChild(cardsContainer);
+  homeContainer.appendChild(footer());
 
-  const continentFilterSelect = main.querySelector('#continent-filter');
+  //sección de comportamiento
+  const resetButton = homeContainer.querySelector('#reset-button'); 
+
+  resetButton.addEventListener('click', () => {
+    console.log("Hola");
+  })
+
+
+  //Mostrar Modal
+  //dialogApiKey.showModal();
+
+
+  /*const continentFilterSelect = main.querySelector('#continent-filter');
   const sortBySelect = main.querySelector('#sort-by');
   const totalFortuneElement = main.querySelector('#total-fortune');
   const averageFortuneElement = main.querySelector('#average-fortune');
@@ -78,20 +88,20 @@ export function Home() {
       main.appendChild(noCoincidences());
     } */ //Dentro de la función se ejecuta cada vez que el input cambia 
     
-    richPeopleList.remove();
-    richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
-    updateFortuneStats(filteredData);
-  })  
+  //   richPeopleList.remove();
+  //   richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
+  //   updateFortuneStats(filteredData);
+  // })  
 
   //Función para boton limpiar
-  resetButton.addEventListener('click', () => {
-    continentFilterSelect.value = 'Todos';
-    sortBySelect.value = 'asc';
-    richPeopleList.remove();
-    richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
-    updateFortuneStats(data);
-  });
+  // resetButton.addEventListener('click', () => {
+  //   continentFilterSelect.value = 'Todos';
+  //   sortBySelect.value = 'asc';
+  //   richPeopleList.remove();
+  //   richPeopleList = document.querySelector("main").appendChild(renderItems(sortBy(data, 'asc')));
+  //   updateFortuneStats(data);
+  // });¨*/
 
-  return richPeopleList;
+  return homeContainer;
 }
 export default Home;
