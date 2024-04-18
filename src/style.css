@@ -46,7 +46,7 @@
 :root {
     --main-color: #FFAC46;
     --orange: #C96C34;
-    --red: #922B21;
+    --red: #FFFFFF;
 }
 * {
     box-sizing: border-box;
@@ -54,17 +54,16 @@
     padding: 0;
 }
 body{
-    background-image: url("https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/gris.png");
-    background-size: contain;
+    background-image: url("https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/gris.jpeg");
+    background-size: auto;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; 
     color: white;
     min-height: 100vh;
 }
 header{
-    height: 200px;
-    padding-top: 64px;
+    height: auto;
     text-align: center;
-    background-color: var(--main-color);
+    background-image: url("https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/tomate%20header.jpg");
     color: var(--red);
 }
 h1{
@@ -75,11 +74,11 @@ main {
     text-align: center;
 }
 section {
-    padding: 24px;
     width: 100%;
     font-size: 28px;
 }
 #search-section {
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +129,8 @@ ul{
     margin: 12px;
     padding: 0 12px 0 12px;
     border-radius: 8px ;
-    background-color: var(--main-color);
+    background-image: url("https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/tomate%20cards.jpg");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
