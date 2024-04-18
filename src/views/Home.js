@@ -86,7 +86,7 @@ export function Home() {
     cardsContainer.innerHTML = '';
     cardsContainer.appendChild(renderItems(sortBy(data, 'asc')));
     updateFortuneStats(data);
-    searchInput.innerHTML = '';
+    searchInput.value = '';
   });
   /*saveButton.addEventListener('click', () => {
     const inputApiKey = homeContainer.querySelector('#input-api-key').value;
