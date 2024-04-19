@@ -3,9 +3,11 @@ import Home from './views/Home.js';
 //import About from './views/About.js';
 import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
+import  richPerson  from './views/richPerson.js';
 
 const routes = {
   "/": Home,  
+  "/richPerson": richPerson,
   "/error": error 
 };
 
@@ -13,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const rootEl = document.getElementById('root');
   setRootEl(rootEl);
   setRoutes(routes);
-  onURLChange(window.location.pathname); 
+  onURLChange(window.location); 
 });
 
 /*
