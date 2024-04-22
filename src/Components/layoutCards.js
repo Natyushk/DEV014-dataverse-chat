@@ -8,6 +8,10 @@ export const renderItems = (dataArray) => {
   // Crear un nuevo ul 
   const newUl = document.createElement("ul");
   newUl.setAttribute("id", "rich-people-list");
+
+  // Agregar una clase al contenedor para aplicar estilos flexbox
+  newUl.classList.add("card-container");
+
   // Iterar sobre cada elemento en el array
   dataArray.forEach(element => {
     // Crear un nuevo li para cada elemento
@@ -23,22 +27,29 @@ export const renderItems = (dataArray) => {
     
     // Crear y configurar el párrafo con el nombre
     const newPName = document.createElement("p");
+    newPName.classList.add("name");
     newPName.setAttribute("itemprop", "name");
     newPName.textContent = `Nombre: ${element.name}`
     newLi.appendChild(newPName);
     //newPName.innerHTML = element.name;
     
+    // Crear y configurar el párrafo con el continente
     const newPContinent = document.createElement("p");
+    newPContinent.classList.add("continent");
     //newPContinent.textContent = `Continente: ${element.extraInfo.continent}`
     newLi.appendChild(newPContinent);
     newPContinent.innerHTML = element.extraInfo.continent;
     
+    // Crear y configurar el párrafo con la fortuna
     const newPFortune = document.createElement("p");
+    newPFortune.classList.add("fortune");
     //newPFortune.textContent = `Fortuna: ${element.facts.fortune}`
     newLi.appendChild(newPFortune);
     newPFortune.innerHTML = element.facts.fortune;
     
+    // Crear y configurar el párrafo con la descripción corta
     const newPshortDescription = document.createElement("p");
+    newPshortDescription.classList.add("short-description");
     //newPFortune.textContent = `Fortuna: ${element.facts.fortune}`
     newLi.appendChild(newPshortDescription);
     newPshortDescription.innerHTML = element.shortDescription;

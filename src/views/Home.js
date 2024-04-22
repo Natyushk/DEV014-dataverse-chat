@@ -5,6 +5,7 @@ import { filterByContinent, sortBy, calculateFortuneStats, filterByName } from '
 import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
 import footer from '../Components/footer.js';
+//import Sidebar from '../Components/sidebar.js';
 
 //import saveApiKey from '../Components/saveApiKey.js';
 import noCoincidences from '../Components/noCoincidences.js';
@@ -20,6 +21,9 @@ export function Home() {
   cardsContainer.appendChild(renderItems(data));
   homeContainer.appendChild(cardsContainer);
   homeContainer.appendChild(footer());
+  //Crear y agrega la barra lateral al contenedor principal
+  /*const sidebar = new Sidebar();
+  homeContainer.appendChild(sidebar);*/
 
   //sección de comportamiento
   const continentFilterSelect = homeContainer.querySelector('#continent-filter');
@@ -101,3 +105,52 @@ export function Home() {
   return homeContainer;
 }
 export default Home;
+
+
+//Estilos para el menu hamburguesa
+/* Estilos para la barra lateral */
+//.sidebar {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  height: 100vh;
+//  width: 60px;
+//  background-color: #333;
+//  transition: width 0.3s ease-in-out;
+//  z-index: 1000;
+//  overflow: hidden;
+//}
+//
+//.sidebar.open {
+//  width: 200px;
+//}
+//
+///* Estilos para el menú hamburguesa */
+//.menu-toggle {
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: space-around;
+//  height: 24px;
+//  cursor: pointer;
+//  padding: 10px;
+//}
+//
+//.menu-toggle span {
+//  width: 30px;
+//  height: 3px;
+//  background-color: #fff;
+//}
+//
+///* Estilos para el menú de navegación */
+//.menu {
+//  list-style: none;
+//  margin: 0;
+//  padding: 0;
+//}
+//
+//.menu a {
+//  color: #fff;
+//  text-decoration: none;
+//  padding: 10px;
+//  display: block;
+//}
