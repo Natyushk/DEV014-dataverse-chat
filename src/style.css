@@ -59,6 +59,7 @@ body{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; 
     color: white;
     min-height: 100vh;
+    position: relative;
 }
 header{
     height: auto;
@@ -80,8 +81,22 @@ section {
 #search-section {
     padding: 24px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+}
+#search-input {
+    margin: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: smaller; 
+}
+button{
+    width: 150px;
+    border-radius: 8px;
+    margin-left: 24px;
+    font-size: 28px;
+    box-shadow: 5px 5px;
 }
 div{
     padding: 24px;
@@ -107,13 +122,6 @@ select:focus{
 select:hover{
     box-shadow: 3px 3px var(--main-color);   
 }
-button{
-    width: 150px;
-    border-radius: 8px;
-    margin-left: 24px;
-    font-size: 28px;
-    box-shadow: 5px 5px;
-}
 button:hover {
     background-color: var(--main-color);
 }
@@ -123,9 +131,15 @@ ul{
     flex-direction: row;
     flex-wrap: wrap;
 }
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuir el espacio entre las tarjetas */
+    max-width: 1600px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrar el contenedor en la pantalla */
+}
 .card { 
-    width: 380px;
-    height: 550px;  
+    width: calc(25% - 24px); /* Calcula el 25% del ancho del contenedor y resta el margen */ 
     margin: 12px;
     padding: 0 12px 0 12px;
     border-radius: 8px ;
@@ -137,7 +151,38 @@ ul{
     list-style: none; 
     flex-grow: 1;
     color: var(--red);
+    font-size: 1em;
 }
+.card .name {
+    font-size: 1.2em;
+}
+.card .continent {
+    font-size: 1em;
+}
+.card .fortune {
+    font-size: 0.9em;
+}
+.card .short-description {
+    font-size: 0.8em;
+}
+@media screen and (max-width: 1600px) {
+    .card {
+        width: calc(33.33% - 24px); /* Cambia el ancho de la tarjeta para tres tarjetas por fila */
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .card {
+        width: calc(50% - 24px); /* Cambia el ancho de la tarjeta para dos tarjetas por fila */
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: calc(100% - 24px); /* Cambia el ancho de la tarjeta para una tarjeta por fila */
+    }
+}
+
 li p:nth-child(2){
     font-size: 32px;
 }
@@ -145,19 +190,21 @@ li p:nth-child(4), p:nth-child(5) {
     margin-top: 12px;
 }
 img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     margin: 24px;
     border-radius: 100%;
 }
 footer{
     width: 100%;
-    height: 32px;
-    background-color:var(--red);
-    position: absolute;
+    height: 50px;
+    background-color: var(--red);
+    position: fixed; /* Cambiar a posición fija */
     bottom: 0;
+    left: 0; /* Alinear el footer a la izquierda */
     text-align: center;
+    background-image: url(https://raw.githubusercontent.com/Natyushk/DEV014-dataverse-chat/main/src/assets/vino%20footer.jpg);
 }
 footer p {
-    padding: 8px;
+    padding: 10px;
 }
