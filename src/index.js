@@ -4,11 +4,13 @@ import Home from './views/Home.js';
 import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
 import  richPerson  from './views/richPerson.js';
+import saveApiKey from './views/saveApiKey.js';
 
 const routes = {
   "/": Home,  
   "/richPerson": richPerson,
-  "/error": error 
+  "/apikey": saveApiKey,
+  "/error": error
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -16,6 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
   setRootEl(rootEl);
   setRoutes(routes);
   onURLChange(window.location); 
+});
+
+window.addEventListener('popstate', (event) =>{
+  const state = event.state;
+  onURLChange(document.location, state);
 });
 
 /*

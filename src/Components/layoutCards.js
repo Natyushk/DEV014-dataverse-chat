@@ -1,3 +1,4 @@
+import { navigateTo } from "../router.js";
 // Definición de la función renderItems corregida
 export const renderItems = (dataArray) => {
   // Verificar si dataArray es un array
@@ -19,6 +20,9 @@ export const renderItems = (dataArray) => {
     newLi.classList.add("card");
     newLi.setAttribute("itemscope", "");
     newLi.setAttribute("itemtype", "https://schema.org/Person");
+    newLi.addEventListener('click', () => {
+      navigateTo('/richPerson', {id: element.id})
+    })
     
     // Crear y configurar la imagen
     const nodoImg = document.createElement("img");
