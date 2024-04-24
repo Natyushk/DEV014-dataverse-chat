@@ -6,8 +6,6 @@ import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
 import footer from '../Components/footer.js';
 //import Sidebar from '../Components/sidebar.js';
-
-//import saveApiKey from '../Components/saveApiKey.js';
 import noCoincidences from '../Components/noCoincidences.js';
 
 export function Home() {
@@ -32,7 +30,6 @@ export function Home() {
   const averageFortuneElement = homeContainer.querySelector('#average-fortune');
   const searchInput = homeContainer.querySelector('#search-input');
   const resetButton = homeContainer.querySelector('#reset-button');
-  //const saveButton = homeContainer.querySelector('#save-apikey');
 
   // Función para actualizar y mostrar la fortuna total y el promedio
   const updateFortuneStats = (data) => {
