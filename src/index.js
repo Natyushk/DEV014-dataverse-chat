@@ -19,15 +19,3 @@ window.addEventListener("DOMContentLoaded", () => {
   setRoutes(routes);
   onURLChange(window.location); 
 });
-
-window.addEventListener('popstate', (event) =>{
-  const state = event.state;
-  onURLChange(document.location, state);
-});
-
-/*
-TODO:
-1.- Definir rutas en router.
-2.- Pasar "root element" a router.
-3.- Invocar el router para renderizar la vista correcta.
-*/

@@ -20,6 +20,7 @@ export const renderItems = (dataArray) => {
     newLi.classList.add("card");
     newLi.setAttribute("itemscope", "");
     newLi.setAttribute("itemtype", "https://schema.org/Person");
+    //Manejador de evento click para enviar objeto de tarjeta seleccionada
     newLi.addEventListener('click', () => {
       navigateTo('/richPerson', {id: element.id})
     })
