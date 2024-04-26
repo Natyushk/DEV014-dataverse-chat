@@ -6,12 +6,14 @@ import divStats from '../Components/divStats.js';
 import searchSection from '../Components/searchSection.js';
 import footer from '../Components/footer.js';
 import noCoincidences from '../Components/noCoincidences.js';
+import { sidebar } from '../Components/sidebar.js';
 
 export function Home() {
   //Llamar componente header
   const homeContainer = document.createElement('section');
-  homeContainer.appendChild(header());
+  homeContainer.appendChild(sidebar('home'));
   homeContainer.appendChild(searchSection());
+  homeContainer.appendChild(header());
   homeContainer.appendChild(divStats());
 
   //Llamar a las tarjetas y limpieza
@@ -86,7 +88,8 @@ export function Home() {
     updateFortuneStats(data);
     searchInput.value = '';
   });
-  
+
   return homeContainer;
 }
+
 export default Home;
