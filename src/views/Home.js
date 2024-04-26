@@ -11,9 +11,9 @@ import { sidebar } from '../Components/sidebar.js';
 export function Home() {
   //Llamar componente header
   const homeContainer = document.createElement('section');
+  homeContainer.appendChild(header());
   homeContainer.appendChild(sidebar('home'));
   homeContainer.appendChild(searchSection());
-  homeContainer.appendChild(header());
   homeContainer.appendChild(divStats());
 
   //Llamar a las tarjetas y limpieza
