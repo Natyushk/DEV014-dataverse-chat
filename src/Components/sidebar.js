@@ -12,14 +12,14 @@ export function sidebar(actualPath) {
   // Generar los enlaces según la vista actual
   if (actualPath === 'home') {
     // Vista home: mostrar "Chat grupal" y "Api key"
-    navLinks.innerHTML = '<a href="#">Chat grupal</a>' + '<a href="/apikey">Api Key</a>';
+    navLinks.innerHTML = '<a class= "links" href="#">Chat grupal</a>' + '<a class= "links" href="/apikey">Api Key</a>';
   } else if (actualPath === 'richPerson') {
     // Vista richPerson: mostrar "Chat grupal", "Inicio" y "Api key"
-    navLinks.innerHTML = '<a href="#">Chat grupal</a>' +
-      '<a href="/">Inicio</a>' + '<a href="/apikey">Api Key</a>';
+    navLinks.innerHTML = '<a class= "links" href="#">Chat grupal</a>' +
+      '<a class= "links" href="/">Inicio</a>' + '<a class= "links" href="/apikey">Api Key</a>';
   } else if (actualPath === 'groupChat') {
     // Vista groupChat: solo mostrar "Inicio" y "Api key"
-    navLinks.innerHTML = '<a href="/">Inicio</a>' + '<a href="/apikey">Api Key</a>';
+    navLinks.innerHTML = '<a class= "links" href="/">Inicio</a>' + '<a class= "links" href="/apikey">Api Key</a>';
   }
 
   return navbarContainer;
