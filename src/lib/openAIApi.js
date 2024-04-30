@@ -1,5 +1,5 @@
 // Importa la función para obtener la API KEY desde apiKey.js
-import { getApiKey } from './apiKey.js';
+import { getApiKey } from './apikey.js';
 
 export const communicateWithOpenAI = (messages) => {
   const apiKey = getApiKey();
