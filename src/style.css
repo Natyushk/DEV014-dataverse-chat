@@ -217,9 +217,14 @@ footer p {
     grid-template-columns: repeat(5, 1fr);
     background-color: var(--white);
     opacity: 1.0;
+    overflow-y: scroll;
 }
-.layout-message{
+.user-message{
     grid-column: 3/6;
+    color: #3E0710;
+}
+.response-message{
+    grid-column: 1/4;
     color: #3E0710;
 }
 .card__chat-span{
