@@ -19,3 +19,8 @@ window.addEventListener("DOMContentLoaded", () => {
   setRoutes(routes);
   onURLChange(window.location); 
 });
+
+//Controlado de eventos que se dispara cuando el usuario navega hacia atras o adelante
+window.addEventListener("popstate", () => {
+  onURLChange(window.location); 
+});

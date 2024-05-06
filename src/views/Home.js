@@ -88,7 +88,6 @@ export function Home() {
     updateFortuneStats(data);
     searchInput.value = '';
   });
-
   return homeContainer;
 }
 
