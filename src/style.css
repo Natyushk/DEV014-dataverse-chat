@@ -159,6 +159,15 @@ footer{
 footer p {
     padding: 12px;
 }
+.chat-footer{
+    position: relative; /* Cambiar a posición fija */
+}
+.error{
+    padding: 50px; 
+}
+.error img{
+    border-radius: 0%;
+}
 
 /* Estilos de vista Rich person*/
 .cardChat{
@@ -344,6 +353,10 @@ footer p {
     }
     input{
         padding: 0 24px;
+    }
+    .error img{
+        width: 40%;
+        height: auto;
     }
 
 }

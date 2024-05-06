@@ -1,30 +1,21 @@
-import { communicateWithOpenAI } from "./openAIApi";
+import { communicateWithOpenAI } from "./openAIApi.js";
+import nodeMessage from "../Components/message.js";
 
 //obtener los elementos de DOM
 
-//Finción para enviar un mensaje al servidor 
-const sendMessage = async () => {
-    //obtener el mensje del usuario
-
-const message = messageInput.value.trim();
-if (message) {
-    try {
-    //enviar el mensaje a Open AI y obtener la respuesta
-    const response = await communicateWithOpenAI(message);
-
-    //Mostrar la respuesta en el chat (ir en el view)
-    const messageElement = document.createElement('div')
-    messageElement.textContent = response;
-    chatArea.appendChild(messageElement)
-    
-    }
+//Función para enviar un mensaje al servidor 
+export function showMessages(prompInput, chatContainer, namePerson){
+  const prompUser = prompInput.value;
+  chatContainer.appendChild(nodeMessage('user', prompUser));
+  prompInput.value = "";
+  communicateWithOpenAI(namePerson, prompUser).then(response => {
+    const responseMessage = response.choices[0].message.content;
+    //Mostrar la respsuesta de Open Ai en el Chat
+    chatContainer.appendChild(nodeMessage('apiResponse', responseMessage));
+  }).catch(error => {
+    // const responseMessage = response;
+    // chatContainer.appendChild(nodeMessage('error', err));
+    console.error(error);
+  })
 }
-}
-export function chatEvent(promp) {
-  prompInput.value;
-    chatContainer.appendChild(showMessage(promp));
-    const responseMessage = communicateWithOpenAI(promp);
-    chatContainer.appendChild(showMessage(responseMessage));
-    
-    prompInput.value = "";
-    console.log(communicateWithOpenAI('hola'))
+export default showMessages;

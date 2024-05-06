@@ -32,8 +32,5 @@ export const communicateWithOpenAI = (richPerson, userMessage) => {
     const data = res.json();
     return data;
 
-  }).catch(err => {
-    //console.error(err);
-    return err;
   })
 };
