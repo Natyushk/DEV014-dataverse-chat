@@ -16,21 +16,19 @@ export const richPerson = ({id}) => {
   const chatContainer = personContainer.querySelector('.card__chat-conversation');
   const sendButton = personContainer.querySelector('#send-icon');
   const prompInput = personContainer.querySelector('#chat-input');
-  
   const person = data.find((idPerson) => idPerson.id === id);
   const namePerson = person.name; 
-
   sendButton.addEventListener('click', () => {
     const prompUser = prompInput.value;
     chatContainer.appendChild(nodeMessage('user', prompUser));
     prompInput.value = "";
     communicateWithOpenAI(namePerson, prompUser).then(response => {
       const responseMessage = response.choices[0].message.content;
-      // Mostrar la respsuesta de Open Ai en el Chat
+      //Mostrar la respsuesta de Open Ai en el Chat
       chatContainer.appendChild(nodeMessage('apiResponse', responseMessage));
     }).catch(error => {
-      //const responseMessage = response;
-      //chatContainer.appendChild(nodeMessage('error', err));
+      // const responseMessage = response;
+      // chatContainer.appendChild(nodeMessage('error', err));
       console.error(error);
     })
  
@@ -38,6 +36,24 @@ export const richPerson = ({id}) => {
    
   });
 
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      const prompUser = prompInput.value;
+      chatContainer.appendChild(nodeMessage('user', prompUser));
+      prompInput.value = "";
+      communicateWithOpenAI(namePerson, prompUser).then(response => {
+        const responseMessage = response.choices[0].message.content;
+        //Mostrar la respsuesta de Open Ai en el Chat
+        chatContainer.appendChild(nodeMessage('apiResponse', responseMessage));
+      }).catch(error => {
+        // const responseMessage = response;
+        // chatContainer.appendChild(nodeMessage('error', err));
+        console.error(error);
+      })
+
+    }
+  });
+
   return personContainer;
-};  
+}; 
 export default richPerson;
