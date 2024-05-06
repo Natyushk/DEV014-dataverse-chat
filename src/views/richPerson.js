@@ -3,7 +3,8 @@ import cardChat from "../Components/cardChat.js";
 //import footer from "../Components/footer.js";
 import { sidebar } from "../Components/sidebar.js";
 import { communicateWithOpenAI } from "../lib/openAIApi.js";
-//import showMessage from "../Components/message.js";
+import nodeMessage from "../Components/message.js";
+import data from "../Data/dataset.js";
 
 export const richPerson = ({id}) => {
   const personContainer = document.createElement('section');
@@ -12,24 +13,47 @@ export const richPerson = ({id}) => {
   personContainer.appendChild(cardChat({id}));
   // personContainer.appendChild(footer());
   
-  //const chatContainer = personContainer.querySelector('.card__chat-conversation');
+  const chatContainer = personContainer.querySelector('.card__chat-conversation');
   const sendButton = personContainer.querySelector('#send-icon');
-  //const prompInput = personContainer.querySelector('#chat-input');
-
+  const prompInput = personContainer.querySelector('#chat-input');
+  const person = data.find((idPerson) => idPerson.id === id);
+  const namePerson = person.name; 
   sendButton.addEventListener('click', () => {
-     //const promp = prompInput.value;
-     //chatContainer.appendChild(showMessage(promp));
-    // const responseMessage = communicateWithOpenAI(promp); 
-    // chatContainer.appendChild(showMessage(responseMessage));
-    
-    // prompInput.value = "";
-    communicateWithOpenAI('Elon musk', 'Que te inspiro a viajar al espacio').then(response =>{
-      console.log(response)
-    }).then(err=>{
-      console.log(err);
+    const prompUser = prompInput.value;
+    chatContainer.appendChild(nodeMessage('user', prompUser));
+    prompInput.value = "";
+    communicateWithOpenAI(namePerson, prompUser).then(response => {
+      const responseMessage = response.choices[0].message.content;
+      //Mostrar la respsuesta de Open Ai en el Chat
+      chatContainer.appendChild(nodeMessage('apiResponse', responseMessage));
+    }).catch(error => {
+      // const responseMessage = response;
+      // chatContainer.appendChild(nodeMessage('error', err));
+      console.error(error);
     })
+ 
+    
+   
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      const prompUser = prompInput.value;
+      chatContainer.appendChild(nodeMessage('user', prompUser));
+      prompInput.value = "";
+      communicateWithOpenAI(namePerson, prompUser).then(response => {
+        const responseMessage = response.choices[0].message.content;
+        //Mostrar la respsuesta de Open Ai en el Chat
+        chatContainer.appendChild(nodeMessage('apiResponse', responseMessage));
+      }).catch(error => {
+        // const responseMessage = response;
+        // chatContainer.appendChild(nodeMessage('error', err));
+        console.error(error);
+      })
+
+    }
   });
 
   return personContainer;
-};  
+}; 
 export default richPerson;
