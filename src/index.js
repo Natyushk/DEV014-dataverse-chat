@@ -5,12 +5,14 @@ import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
 import  richPerson  from './views/richPerson.js';
 import saveApiKey from './views/saveApiKey.js';
+import panel from './views/panel.js'
 
 const routes = {
   "/": Home,  
   "/richPerson": richPerson,
   "/apikey": saveApiKey,
-  "/error": error
+  "/error": error,
+  "/panel": panel
 };
 
 window.addEventListener("DOMContentLoaded", () => {
