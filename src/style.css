@@ -235,6 +235,9 @@ footer p {
 .user-message, .response-message{
     display: flex;
 }
+.user-message .nameChat{
+    display:none ;
+}
 .pContainer{
     width:fit-content;
     height: fit-content;
@@ -313,6 +316,9 @@ footer p {
 }
 #first-name-group{
     font-size: 16px;
+}
+.nameChat{
+    text-decoration:underline;
 }
 @media (min-width: 1000px) {
     header{

@@ -31,6 +31,5 @@ export const communicateWithOpenAI = (richPerson, userMessage) => {
     }
     const data = res.json();
     return data;
-
   })
 };
