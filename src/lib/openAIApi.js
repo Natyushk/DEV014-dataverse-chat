@@ -21,7 +21,8 @@ export const communicateWithOpenAI = (richPerson, userMessage) => {
         {
           role: 'user',
           content: `${userMessage}`
-        }]
+        }],
+      temperature: 0.7
     })
   });
 
