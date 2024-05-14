@@ -5,7 +5,7 @@ export const nodeMessage = (typeMessage, message, namePerson) => {
   layoutMessage.innerHTML = `
     <div class = "pContainer">
     <p class= "nameChat">${namePerson}</p>
-    <p>${message}</p>
+    <p id = message>${message}</p>
     </div>
     `;
   return layoutMessage;

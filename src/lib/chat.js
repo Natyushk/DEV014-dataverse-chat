@@ -8,15 +8,14 @@ export function showMessages(prompInput, chatContainer, namePerson){
   const prompUser = prompInput.value;
   chatContainer.appendChild(nodeMessage('user', prompUser));
   prompInput.value = "";
-  communicateWithOpenAI(namePerson, prompUser).then(response => {
+  return communicateWithOpenAI(namePerson, prompUser).then(response => {
     const responseMessage = response.choices[0].message.content;
     //Mostrar la respsuesta de Open Ai en el Chat
     chatContainer.appendChild(nodeMessage('apiResponse', responseMessage, namePerson));
     chatContainer.scrollTop = chatContainer.scrollHeight;
   }).catch(error => {
-    // const responseMessage = response;
-    // chatContainer.appendChild(nodeMessage('error', err));
-    console.error(error);
+    const errorMessage = error;
+    chatContainer.appendChild(nodeMessage('error', errorMessage, 'Lo sentimos'));
   })
 }
 export default showMessages;

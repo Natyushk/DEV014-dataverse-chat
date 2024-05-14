@@ -46,34 +46,3 @@ export const filterByName = (data, searchTerm) => {
   //Filtrar los datos por coincidencia de nombre 
   return data.filter(item => item.name.toLowerCase().includes(searchTermLowerCase));
 };
-/*//home
-const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', () => {
-  // 3. Obtener el valor del input
-  const searchTerm = searchInput.value.trim();
-
-  // 4. Filtrar los datos según el valor del input
-  const filteredData = filterByName(data, searchTerm);
-
-  // 5. Renderizar los resultados filtrados
-  richPeopleList.remove();
-  richPeopleList = document.querySelector("main").appendChild(renderItems(filteredData));
-
-  //Actualizar estadisticas de busquedas
-  updateFortuneStats(filteredData);
-});
-
-  // Mostrar mensaje si no hay coincidencias
-  if (filteredData.length === 0) {
-  } 
-  
-  /*esto va en otro lado para MOSTRAR EL MENSAJE
-  viewEl.innerHTML = '<p>No existen coincidencias</p>';*/
-  
-
-/*7. Mostrar todos los componentes cuando se borra el texto del input
-searchInput.addEventListener('keyup', (event) => {
-  if (event.key === 'Backspace' && searchInput.value.trim() === '') {
-    renderItems(data);
-  }
-});*/ 
