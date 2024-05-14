@@ -18,6 +18,7 @@ describe('Se crea un nodo de mensaje por cada respuesta', ()=> {
   it('Crea un nodo para el mensaje del usuario', () => {
     showMessages(input, chatContainer, 'Mark Zuckerberg');
     const userElement = chatContainer.querySelector('.user-message #message')
+    console.log(userElement);
     expect(userElement).toBeDefined();
     expect(chatContainer.innerHTML).toContain('¿Qué edad tienes?');
   });
