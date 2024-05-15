@@ -6,13 +6,15 @@ import nodeMessage from "../Components/message.js";
 //Función para enviar un mensaje al servidor 
 export function showMessages(prompInput, chatContainer, namePerson){
   const prompUser = prompInput.value;
-  console.log('2');
+  
   chatContainer.appendChild(nodeMessage('user', prompUser));
   prompInput.value = "";
   return communicateWithOpenAI(namePerson, prompUser).then(response => {
     const responseMessage = response.choices[0].message.content;
-    console.log('3');
+
     //Mostrar la respsuesta de Open Ai en el Chat
+
+    //Mostrar la respuesta de Open Ai en el Chat
     chatContainer.appendChild(nodeMessage('apiResponse', responseMessage, namePerson));
     chatContainer.scrollTop = chatContainer.scrollHeight;
   }).catch(error => {
