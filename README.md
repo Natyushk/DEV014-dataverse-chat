@@ -2,10 +2,10 @@
 
 # Indice
 * [1. Descripción](#1-Descripción)
-* [2. Prototipo de alta fidelidad](#2-Prototipodealtafidelidad)
-* [3. Funcionalidades Principales](#3-FuncionalidadesPrincipales)
-* [4. Tecnologías Utilizadas](#4-TecnologíasUtilizadas)
-* [5. Listado de problemas de test de usabilidad](#5-Listadodeproblemasdetestdeusabilidad)
+* [2. Prototipo de alta fidelidad](#2-Prototipo-de-alta-fidelidad)
+* [3. Funcionalidades Principales](#3-Funcionalidades-Principales)
+* [4. Tecnologías Utilizadas](#4-Tecnologías-Utilizadas)
+* [5. Listado de problemas de test de usabilidad](#5-Listado-de-problemas-de-test-de-usabilidad)
 * [6. Contribución](#6-Contribución)
 * [7. Contacto](#7-Contacto)
 
