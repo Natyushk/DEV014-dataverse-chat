@@ -1,6 +1,4 @@
-// En este archivo definirás tus rutas e importarás los componentes que vas a renderizar.
 import Home from './views/Home.js';
-//import About from './views/About.js';
 import error from './views/error.js';
 import { setRootEl, setRoutes, onURLChange} from './router.js';
 import  richPerson  from './views/richPerson.js';

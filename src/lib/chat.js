@@ -12,8 +12,6 @@ export function showMessages(prompInput, chatContainer, namePerson){
   return communicateWithOpenAI(namePerson, prompUser).then(response => {
     const responseMessage = response.choices[0].message.content;
 
-    //Mostrar la respsuesta de Open Ai en el Chat
-
     //Mostrar la respuesta de Open Ai en el Chat
     chatContainer.appendChild(nodeMessage('apiResponse', responseMessage, namePerson));
     chatContainer.scrollTop = chatContainer.scrollHeight;
